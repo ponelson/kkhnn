@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Princess Karina Retirement Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Italianno&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blush: #FFE4ED;
+    --rose-mist: #FFC8DD;
+    --pink: #FF6B9D;
+    --deep-rose: #C9184A;
+    --plum: #6B1839;
+    --gold: #D4AF37;
+    --gold-light: #F4D77A;
+    --cream: #FFF8F0;
+    --ink: #3D0B1B;
+    --shadow: 0 8px 32px rgba(201, 24, 74, 0.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    background:
+      radial-gradient(ellipse at top, var(--rose-mist) 0%, transparent 60%),
+      radial-gradient(ellipse at bottom right, #FFD6E8 0%, transparent 50%),
+      linear-gradient(180deg, var(--blush) 0%, #FFEEF5 100%);
+    min-height: 100vh;
+    padding: 20px 14px 60px;
+    overflow-x: hidden;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 10% 20%, var(--gold-light) 0.5px, transparent 1px),
+      radial-gradient(circle at 80% 60%, var(--pink) 0.5px, transparent 1px),
+      radial-gradient(circle at 40% 90%, var(--gold) 0.5px, transparent 1px),
+      radial-gradient(circle at 70% 15%, var(--gold-light) 0.5px, transparent 1px);
+    background-size: 180px 180px, 220px 220px, 260px 260px, 200px 200px;
+    pointer-events: none;
+    opacity: 0.55;
+    z-index: 0;
+  }
+  .stage { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+  header { text-align: center; padding: 24px 8px 36px; position: relative; }
+  .crown {
+    font-size: 56px; line-height: 1; display: inline-block;
+    filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.4));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-6px) rotate(2deg); }
+  }
+  .script {
+    font-family: 'Italianno', cursive;
+    font-size: 38px; color: var(--deep-rose); line-height: 1; margin-top: 8px;
+    text-shadow: 0 2px 4px rgba(201, 24, 74, 0.15);
+  }
+  h1 {
+    font-family: 'Cinzel Decorative', serif; font-weight: 900;
+    font-size: 26px; letter-spacing: 0.04em; color: var(--plum);
+    line-height: 1.2; margin: 4px 0 10px; text-transform: uppercase;
+  }
+  h1 .amp {
+    font-family: 'Italianno', cursive; text-transform: none;
+    font-weight: 400; color: var(--gold); font-size: 1.2em; vertical-align: -0.1em;
+  }
+  .tagline { font-style: italic; font-size: 16px; color: var(--plum); opacity: 0.75; max-width: 380px; margin: 0 auto; }
+  .divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 16px auto 0; max-width: 280px; }
+  .divider .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .divider .dot { color: var(--gold); font-size: 14px; }
+
+  .card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,232,242,0.85) 100%);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 24px;
+    padding: 22px 20px;
+    margin: 18px 0;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(255, 107, 157, 0.18);
+    border-radius: 20px;
+    pointer-events: none;
+  }
+  .card-title {
+    font-family: 'Cinzel Decorative', serif; font-weight: 700;
+    font-size: 15px; letter-spacing: 0.15em; color: var(--deep-rose);
+    text-transform: uppercase; text-align: center; margin-bottom: 4px;
+  }
+  .card-sub {
+    font-family: 'Italianno', cursive; font-size: 26px;
+    color: var(--gold); text-align: center; line-height: 1; margin-bottom: 18px;
+  }
+
+  .donut-wrap { display: flex; align-items: center; justify-content: center; margin: 8px 0 14px; }
+  .donut { transform: rotate(-90deg); transition: all 0.3s; }
+  .donut-stack { position: relative; }
+  .donut-label { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: none; }
+  .donut-label .big { font-family: 'Cinzel Decorative', serif; font-size: 12px; color: var(--plum); letter-spacing: 0.1em; }
+  .donut-label .small { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 22px; color: var(--deep-rose); line-height: 1.1; }
+  .donut-label .tiny { font-family: 'Italianno', cursive; font-size: 18px; color: var(--gold); line-height: 1; }
+
+  .total-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 12px; padding: 10px 14px; margin-bottom: 14px;
+  }
+  .total-bar .label { font-family: 'Cinzel Decorative', serif; font-size: 11px; letter-spacing: 0.12em; color: var(--plum); }
+  .total-bar .value { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 20px; color: var(--deep-rose); }
+  .total-bar.warn .value { color: #B00020; }
+  .total-bar.ok .value { color: #1F7A3F; }
+
+  .preset-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 14px; }
+  .preset-btn {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 10px; padding: 8px 4px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 9.5px; letter-spacing: 0.06em; color: var(--plum);
+    cursor: pointer; text-align: center; transition: all 0.2s;
+  }
+  .preset-btn:hover, .preset-btn:active {
+    background: linear-gradient(135deg, var(--pink), var(--deep-rose));
+    color: #fff; border-color: var(--gold);
+  }
+
+  .cat-header {
+    font-family: 'Italianno', cursive; font-size: 24px;
+    color: var(--gold); margin: 14px 0 8px; padding-left: 4px;
+    border-bottom: 1px dashed rgba(212,175,55,0.5); line-height: 1.1;
+  }
+
+  .holding {
+    background: rgba(255,255,255,0.55);
+    border-radius: 12px; border-left: 3px solid var(--gold);
+    padding: 10px 12px; margin-bottom: 8px;
+  }
+  .h-top { display: grid; grid-template-columns: 14px 1fr auto; gap: 10px; align-items: center; margin-bottom: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; }
+  .h-info .ticker { font-family: 'Cinzel Decorative', serif; font-weight: 700; font-size: 13px; color: var(--plum); letter-spacing: 0.08em; }
+  .h-info .name { font-size: 12px; color: var(--ink); opacity: 0.75; font-style: italic; }
+  .h-info .er { font-size: 10.5px; color: var(--gold); font-weight: 600; }
+  .h-pct { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 18px; color: var(--deep-rose); min-width: 50px; text-align: right; }
+  .h-slider input[type="range"] { width: 100%; }
+
+  input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--pink), var(--gold));
+    border-radius: 10px; outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, var(--pink) 70%);
+    border: 2px solid var(--gold);
+    cursor: pointer; box-shadow: 0 2px 6px rgba(201, 24, 74, 0.4);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff, var(--pink) 70%);
+    border: 2px solid var(--gold); cursor: pointer;
+  }
+
+  .dial-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
+  .dial-label { font-family: 'Cinzel Decorative', serif; font-size: 12px; color: var(--plum); letter-spacing: 0.12em; text-transform: uppercase; }
+  .dial-value { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 18px; color: var(--deep-rose); }
+  .dial { margin-bottom: 16px; }
+
+  .tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 18px; }
+  .tab {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-radius: 12px; padding: 10px 4px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 10px; letter-spacing: 0.08em; color: var(--plum);
+    cursor: pointer; text-align: center; transition: all 0.2s;
+  }
+  .tab.active {
+    background: linear-gradient(135deg, var(--pink), var(--deep-rose));
+    color: #fff; border-color: var(--gold);
+    box-shadow: 0 4px 12px rgba(201, 24, 74, 0.3);
+  }
+
+  .results { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 6px; }
+  .result-box {
+    background: linear-gradient(135deg, rgba(255, 215, 232, 0.8), rgba(255, 248, 240, 0.9));
+    border: 1px solid var(--gold); border-radius: 14px; padding: 14px 10px; text-align: center;
+  }
+  .result-box.hero {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--pink) 0%, var(--deep-rose) 100%);
+    color: #fff; border-color: var(--gold);
+    box-shadow: 0 6px 24px rgba(201, 24, 74, 0.35);
+  }
+  .result-label { font-family: 'Cinzel Decorative', serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.8; margin-bottom: 4px; }
+  .result-value { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 22px; line-height: 1.1; }
+  .result-box.hero .result-value { font-size: 30px; }
+  .result-box.hero .result-label { color: var(--gold-light); opacity: 1; }
+
+  .chart-wrap { margin-top: 14px; }
+  #growthChart { width: 100%; height: auto; }
+
+  .tax-note {
+    margin-top: 14px; padding: 14px 16px;
+    background: rgba(255, 248, 240, 0.7);
+    border-left: 3px solid var(--gold);
+    border-radius: 10px; font-style: italic;
+    font-size: 14px; color: var(--plum); line-height: 1.5;
+  }
+  .tax-note strong { font-style: normal; color: var(--deep-rose); }
+
+  .compare {
+    display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 0;
+    background: rgba(255,255,255,0.6); border-radius: 14px;
+    overflow: hidden; border: 1px solid rgba(212,175,55,0.4); font-size: 13px;
+  }
+  .compare > div { padding: 10px 10px; border-bottom: 1px solid rgba(212,175,55,0.2); border-right: 1px solid rgba(212,175,55,0.2); }
+  .compare > div:nth-child(3n) { border-right: none; }
+  .compare .head {
+    background: linear-gradient(135deg, var(--pink), var(--deep-rose));
+    color: #fff; font-family: 'Cinzel Decorative', serif;
+    font-size: 11px; letter-spacing: 0.1em; text-align: center; padding: 12px 6px;
+  }
+  .compare .row-label {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 10.5px; letter-spacing: 0.08em; color: var(--plum);
+    background: rgba(255, 248, 240, 0.7); display: flex; align-items: center;
+  }
+  .compare .cell { font-size: 12.5px; line-height: 1.35; }
+  .compare .cell strong { color: var(--deep-rose); }
+
+  footer { text-align: center; margin-top: 28px; font-style: italic; font-size: 13px; color: var(--plum); opacity: 0.65; }
+  footer .sig { font-family: 'Italianno', cursive; font-size: 26px; color: var(--deep-rose); display: block; margin-top: 6px; opacity: 0.9; }
+
+  .sparkle { position: absolute; color: var(--gold); pointer-events: none; animation: twinkle 3s ease-in-out infinite; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.1); } }
+
+  @media (max-width: 380px) {
+    h1 { font-size: 22px; }
+    .result-box.hero .result-value { font-size: 26px; }
+    .tab { font-size: 9px; padding: 8px 2px; }
+    .compare { font-size: 11.5px; }
+    .compare .cell { font-size: 11.5px; }
+    .compare .row-label { font-size: 9.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <header>
+    <span class="sparkle" style="top: 30px; left: 20px; font-size: 14px;">✦</span>
+    <span class="sparkle" style="top: 70px; right: 30px; font-size: 18px; animation-delay: 1s;">✧</span>
+    <span class="sparkle" style="top: 120px; left: 40px; font-size: 12px; animation-delay: 2s;">✦</span>
+    <div class="crown">👑</div>
+    <div class="script">Her Royal Portfolio</div>
+    <h1>Princess Karina <span class="amp">&</span><br>The Retirement Realm</h1>
+    <p class="tagline">A bespoke kingdom of compounding crowns. Adjust thy holdings, summon thy fortune.</p>
+    <div class="divider"><span class="line"></span><span class="dot">❀</span><span class="line"></span></div>
+  </header>
+
+  <section class="card">
+    <div class="card-title">The Royal Allocation</div>
+    <div class="card-sub">build thy own kingdom</div>
+
+    <div class="donut-wrap">
+      <div class="donut-stack">
+        <svg class="donut" id="donutSvg" width="200" height="200" viewBox="0 0 200 200">
+          <g id="donutSegments"></g>
+          <circle cx="100" cy="100" r="55" fill="rgba(255,255,255,0.85)" stroke="rgba(212,175,55,0.4)" stroke-width="1"/>
+        </svg>
+        <div class="donut-label">
+          <div class="big">EXPECTED</div>
+          <div class="small" id="expReturn">7.9%</div>
+          <div class="tiny">per annum</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-bar" id="totalBar">
+      <span class="label">Total Allocation</span>
+      <span class="value"><span id="totalPct">100</span>%</span>
+    </div>
+
+    <div class="preset-row">
+      <div class="preset-btn" data-preset="conservative">Conservative</div>
+      <div class="preset-btn" data-preset="balanced">Balanced</div>
+      <div class="preset-btn" data-preset="aggressive">Aggressive</div>
+      <div class="preset-btn" data-preset="normalize">Normalize</div>
+    </div>
+
+    <div id="holdingsContainer"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-title">The Magic Mirror</div>
+    <div class="card-sub">play with thy fate</div>
+
+    <div class="tabs" id="acctTabs">
+      <div class="tab active" data-acct="roth">Roth IRA</div>
+      <div class="tab" data-acct="trad">Trad IRA</div>
+      <div class="tab" data-acct="529">529</div>
+      <div class="tab" data-acct="taxable">Taxable</div>
+    </div>
+
+    <div class="dial">
+      <div class="dial-row"><span class="dial-label">Starting Balance</span><span class="dial-value" id="vStart">$0</span></div>
+      <input type="range" id="start" min="0" max="50000" step="500" value="0">
+    </div>
+    <div class="dial">
+      <div class="dial-row"><span class="dial-label">Yearly Contribution</span><span class="dial-value" id="vContrib">$3,000</span></div>
+      <input type="range" id="contrib" min="0" max="7500" step="100" value="3000">
+    </div>
+    <div class="dial">
+      <div class="dial-row"><span class="dial-label">Years of Growth</span><span class="dial-value" id="vYears">40 years</span></div>
+      <input type="range" id="years" min="1" max="50" step="1" value="40">
+    </div>
+    <div class="dial">
+      <div class="dial-row"><span class="dial-label">Tax Bracket</span><span class="dial-value" id="vTax">22%</span></div>
+      <input type="range" id="taxRate" min="10" max="37" step="1" value="22">
+    </div>
+
+    <div class="results">
+      <div class="result-box hero">
+        <div class="result-label">After-Tax Treasure</div>
+        <div class="result-value" id="rNet">$0</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Gross Balance</div>
+        <div class="result-value" id="rGross">$0</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Taxes Owed</div>
+        <div class="result-value" id="rTax">$0</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">You Contributed</div>
+        <div class="result-value" id="rContrib">$0</div>
+      </div>
+      <div class="result-box">
+        <div class="result-label">Growth Earned</div>
+        <div class="result-value" id="rGrowth">$0</div>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <svg id="growthChart" viewBox="0 0 600 240" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+
+    <div class="tax-note" id="taxNote"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-title">Roth vs. Traditional</div>
+    <div class="card-sub">two paths, one princess</div>
+
+    <p style="font-size: 14px; margin-bottom: 14px; color: var(--plum); font-style: italic;">
+      Both IRAs share a <strong style="color: var(--deep-rose); font-style: normal;">single combined $7,500 limit</strong> in 2026 ($8,600 if you're 50+). You may split between them, but the total can't exceed the cap. Choose based on whether your tax bracket today is lower (Roth wins) or higher (Traditional wins) than your expected bracket in retirement.
+    </p>
+
+    <div class="compare">
+      <div class="head"></div>
+      <div class="head">Roth IRA</div>
+      <div class="head">Traditional IRA</div>
+
+      <div class="row-label">Contributions</div>
+      <div class="cell">After-tax — <strong>no</strong> deduction now</div>
+      <div class="cell"><strong>Pre-tax</strong> — deduction may apply</div>
+
+      <div class="row-label">Growth</div>
+      <div class="cell"><strong>Tax-free</strong> forever</div>
+      <div class="cell">Tax-<strong>deferred</strong></div>
+
+      <div class="row-label">Withdrawals (59½+)</div>
+      <div class="cell"><strong>$0 tax</strong></div>
+      <div class="cell">Taxed as ordinary income</div>
+
+      <div class="row-label">2026 Limit</div>
+      <div class="cell">$7,500 (+$1,100 if 50+)</div>
+      <div class="cell">$7,500 (+$1,100 if 50+)</div>
+
+      <div class="row-label">Income Cap to Contribute</div>
+      <div class="cell">Single: <strong>$153K–$168K</strong> phase-out · MFJ: <strong>$242K–$252K</strong></div>
+      <div class="cell"><strong>None</strong> to contribute. Deduction phases out if covered by workplace plan</div>
+
+      <div class="row-label">Early Withdrawal</div>
+      <div class="cell"><strong>Contributions</strong> come out anytime, tax & penalty free</div>
+      <div class="cell">10% penalty + tax before 59½</div>
+
+      <div class="row-label">Required Distributions</div>
+      <div class="cell"><strong>None</strong> ever</div>
+      <div class="cell">Begin at age 73</div>
+
+      <div class="row-label">Best For</div>
+      <div class="cell">Young, low bracket now, expects higher later — <strong>likely you</strong></div>
+      <div class="cell">High earner now, expects lower in retirement</div>
+    </div>
+
+    <div class="tax-note" style="margin-top: 16px; border-left-color: var(--pink); background: rgba(255, 230, 240, 0.6);">
+      <strong>Backdoor Roth:</strong> If income exceeds the Roth cap, contribute to a Traditional IRA (no income limit), then convert to Roth. The conversion is taxable, but if the Traditional contribution was non-deductible, the tax is minimal. Standard move once income climbs above $168K single.
+    </div>
+
+    <div class="tax-note" style="margin-top: 10px; border-left-color: var(--pink); background: rgba(255, 230, 240, 0.6);">
+      <strong>529 Plan:</strong> No income limits, no federal contribution cap. Some states give a state-tax deduction (typically $5K–$10K/yr). Tax-free for tuition, fees, books, room & board, plus up to $10K/yr K–12 tuition. SECURE 2.0 lets you roll up to $35K lifetime from a 529 into a Roth IRA after the account has been open 15 years — a powerful escape hatch if college isn't needed.
+    </div>
+
+    <div class="tax-note" style="margin-top: 10px; border-left-color: var(--pink); background: rgba(255, 230, 240, 0.6);">
+      <strong>SEP IRA:</strong> The queen of self-employment accounts. The moment you earn 1099 income — freelance work, tutoring, an Etsy shop, thy own LLC — a SEP IRA lets you stash up to <strong>25% of net self-employment earnings</strong>, capped at roughly <strong>$72,000 in 2026</strong>. That's nearly ten times the Roth limit. Funded <em>pre-tax</em> like a Traditional IRA: deduct now, grow tax-deferred, pay ordinary income tax on withdrawal. <strong>No income cap</strong> to contribute and no Roth phase-out to worry about. The employer (which is you, when self-employed) makes the contributions; the employee does not. RMDs begin at 73. Best wielded later in life when 1099 income flows — but worth knowing now so the door is open the moment thou earnest a freelance dollar.
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="card-title">What Coin May Enter</div>
+    <div class="card-sub">the rules of royal contribution</div>
+
+    <p style="font-size: 14px; margin-bottom: 14px; color: var(--plum); font-style: italic;">
+      Not all gold may pass into thy retirement vault. IRAs — Roth, Traditional, and SEP — demand <strong style="color: var(--deep-rose); font-style: normal;">earned income</strong>. That means wages from a W-2 job, 1099 freelance pay, tips, commissions, or net self-employment profit, all reported to the IRS. Allowance, gifts, inheritance, investment income, and most scholarships do <em>not</em> count. The annual contribution is capped at the <strong style="color: var(--deep-rose); font-style: normal;">lesser</strong> of the legal limit ($7,500 for 2026) or thy total earned income for that year.
+    </p>
+
+    <div class="compare" style="grid-template-columns: 1.3fr 0.7fr 1fr;">
+      <div class="head">Source of Money</div>
+      <div class="head">IRA?</div>
+      <div class="head">529 / Taxable?</div>
+
+      <div class="row-label">W-2 wages, salary, tips</div>
+      <div class="cell"><strong>Yes</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">1099 / self-employment</div>
+      <div class="cell"><strong>Yes</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Babysitting, lawn-mowing, tutoring cash</div>
+      <div class="cell"><strong>Yes</strong> if reported on Schedule C</div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Gift from parent or grandparent</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Inheritance</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Dividends, capital gains, interest</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Allowance from parents</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Scholarships & grants</div>
+      <div class="cell"><strong>No</strong> (unless taxable portion of stipend)</div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Unemployment, Social Security, pension</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+
+      <div class="row-label">Alimony (post-2018 divorce)</div>
+      <div class="cell"><strong>No</strong></div>
+      <div class="cell"><strong>Yes</strong></div>
+    </div>
+
+    <div class="tax-note" style="margin-top: 14px; border-left-color: var(--pink); background: rgba(255, 230, 240, 0.6);">
+      <strong>The Math of Limits:</strong> Thy max IRA contribution is the lesser of the cap or thy earned income. Earn $2,000 babysitting → max $2,000. Earn $9,000 at a summer job → max $7,500 (the 2026 cap). Earn $0 → max $0. Contributing more triggers a 6% excise tax per year until removed.
+    </div>
+
+    <div class="tax-note" style="margin-top: 10px; border-left-color: var(--gold); background: rgba(255, 248, 240, 0.7);">
+      <strong>The Royal Loophole:</strong> The earnings must be <em>thine</em>, but the dollars contributed need not be. If Karina earns $2,000 tutoring, a grandparent may gift her $2,000 to fund the Roth — she keeps her own paycheck for spending, and the contribution is still valid up to her earned amount. <strong>Document everything:</strong> a simple ledger of dates, hours, work performed, and who paid — and file the income on a tax return (even if no tax is owed) — creates the paper trail the IRS would expect.
+    </div>
+
+    <div class="tax-note" style="margin-top: 10px; border-left-color: var(--gold); background: rgba(255, 248, 240, 0.7);">
+      <strong>Family Hires:</strong> A parent who owns a sole proprietorship or single-member LLC may pay a child for legitimate work (modeling for the website, filing, errands) at a reasonable wage. The child's earnings up to the standard deduction (~$15K in 2026) are federal-income-tax-free, and under age 18 they're also exempt from Social Security and Medicare tax. Those wages then become eligible Roth fuel — a favorite move of small-business families.
+    </div>
+
+    <div class="tax-note" style="margin-top: 10px; border-left-color: var(--pink); background: rgba(255, 230, 240, 0.6);">
+      <strong>Custodial vs. Adult:</strong> Until age 18 (or 21 in a few states), a minor's Roth IRA must be a <em>custodial</em> Roth IRA, held in a parent's name on behalf of the child. The earned-income rule still applies — the child must have earnings of her own. Brokerages like Fidelity, Schwab, and Vanguard open these for free. Control transfers to the child at the age of majority.
+    </div>
+  </section>
+
+  <footer>
+    Ever after, compounded quarterly.
+    <span class="sig">— Princess Karina</span>
+  </footer>
+</div>
+
+<script>
+  const holdings = [
+    { id: 'vti',  ticker: 'VTI',  name: 'Vanguard Total U.S. Stock Market', er: 0.03, ret: 10.0, color: '#1F3A5F', cat: 'US Stocks', def: 30 },
+    { id: 'voo',  ticker: 'VOO',  name: 'Vanguard S&P 500',                  er: 0.03, ret: 10.0, color: '#2E5C8A', cat: 'US Stocks', def: 15 },
+    { id: 'qqqm', ticker: 'QQQM', name: 'Invesco Nasdaq-100',                er: 0.15, ret: 13.0, color: '#4A7FB8', cat: 'US Stocks', def: 5 },
+    { id: 'schd', ticker: 'SCHD', name: 'Schwab U.S. Dividend Equity',       er: 0.06, ret: 9.0,  color: '#6B9DD4', cat: 'US Stocks', def: 0 },
+    { id: 'vxus', ticker: 'VXUS', name: 'Vanguard Total International',      er: 0.05, ret: 7.0,  color: '#C9184A', cat: 'Foreign Stocks', def: 12 },
+    { id: 'vwo',  ticker: 'VWO',  name: 'Vanguard Emerging Markets',         er: 0.08, ret: 8.0,  color: '#E63969', cat: 'Foreign Stocks', def: 3 },
+    { id: 'bnd',  ticker: 'BND',  name: 'Vanguard Total Bond Market',        er: 0.03, ret: 4.0,  color: '#6B1839', cat: 'Bonds', def: 22.5 },
+    { id: 'tlt',  ticker: 'TLT',  name: 'iShares 20+ Year Treasury',         er: 0.15, ret: 3.5,  color: '#8C2A52', cat: 'Bonds', def: 0 },
+    { id: 'vtip', ticker: 'VTIP', name: 'Vanguard Short-Term TIPS',          er: 0.04, ret: 3.0,  color: '#A4406B', cat: 'Bonds', def: 5 },
+    { id: 'gldm', ticker: 'GLDM', name: 'SPDR Gold MiniShares',              er: 0.10, ret: 6.0,  color: '#D4AF37', cat: 'Commodities', def: 5 },
+    { id: 'slv',  ticker: 'SLV',  name: 'iShares Silver Trust',              er: 0.50, ret: 5.0,  color: '#B8B8B8', cat: 'Commodities', def: 0 },
+    { id: 'btc',  ticker: 'BTC',  name: 'Bitcoin (direct on Robinhood)',     er: 0.0,  ret: 15.0, color: '#FF6B9D', cat: 'Crypto', def: 1.5 },
+    { id: 'eth',  ticker: 'ETH',  name: 'Ethereum (direct on Robinhood)',    er: 0.0,  ret: 18.0, color: '#FFA8C5', cat: 'Crypto', def: 1 }
+  ];
+
+  const presets = {
+    conservative: { vti: 20, voo: 10, qqqm: 0, schd: 0, vxus: 8, vwo: 0, bnd: 40, tlt: 0, vtip: 12, gldm: 8, slv: 0, btc: 2, eth: 0 },
+    balanced:     { vti: 30, voo: 15, qqqm: 5, schd: 0, vxus: 12, vwo: 3, bnd: 22.5, tlt: 0, vtip: 5, gldm: 5, slv: 0, btc: 1.5, eth: 1 },
+    aggressive:   { vti: 25, voo: 25, qqqm: 15, schd: 0, vxus: 12, vwo: 5, bnd: 5, tlt: 0, vtip: 0, gldm: 3, slv: 0, btc: 6, eth: 4 }
+  };
+
+  const container = document.getElementById('holdingsContainer');
+  const categories = ['US Stocks', 'Foreign Stocks', 'Bonds', 'Commodities', 'Crypto'];
+  categories.forEach(cat => {
+    const header = document.createElement('div');
+    header.className = 'cat-header';
+    header.textContent = cat;
+    container.appendChild(header);
+    holdings.filter(h => h.cat === cat).forEach(h => {
+      const row = document.createElement('div');
+      row.className = 'holding';
+      row.style.borderLeftColor = h.color;
+      row.innerHTML = `
+        <div class="h-top">
+          <div class="swatch" style="background:${h.color}"></div>
+          <div class="h-info">
+            <div class="ticker">${h.ticker}</div>
+            <div class="name">${h.name}</div>
+            <div class="er">${h.er === 0 ? 'No expense ratio · spread only' : h.er.toFixed(2) + '% expense ratio'} · est. ${h.ret.toFixed(1)}%/yr</div>
+          </div>
+          <div class="h-pct" id="pct-${h.id}">${h.def}%</div>
+        </div>
+        <div class="h-slider">
+          <input type="range" id="slider-${h.id}" min="0" max="60" step="0.5" value="${h.def}">
+        </div>
+      `;
+      container.appendChild(row);
+    });
+  });
+
+  function getAllocations() {
+    return holdings.map(h => ({ ...h, pct: +document.getElementById('slider-' + h.id).value }));
+  }
+
+  function setAllocations(values) {
+    holdings.forEach(h => {
+      const v = values[h.id] || 0;
+      document.getElementById('slider-' + h.id).value = v;
+      document.getElementById('pct-' + h.id).textContent = v + '%';
+    });
+    refresh();
+  }
+
+  function normalize() {
+    const allocs = getAllocations();
+    const total = allocs.reduce((s, a) => s + a.pct, 0);
+    if (total === 0) return;
+    holdings.forEach(h => {
+      const slider = document.getElementById('slider-' + h.id);
+      const newVal = Math.round((+slider.value / total) * 1000) / 10;
+      slider.value = newVal;
+      document.getElementById('pct-' + h.id).textContent = newVal + '%';
+    });
+    refresh();
+  }
+
+  function drawDonut(allocs) {
+    const segs = document.getElementById('donutSegments');
+    segs.innerHTML = '';
+    const cx = 100, cy = 100, r = 75, stroke = 32;
+    const circ = 2 * Math.PI * r;
+    const total = allocs.reduce((s, a) => s + a.pct, 0);
+    if (total === 0) return;
+    let offset = 0;
+    allocs.forEach(a => {
+      if (a.pct <= 0) return;
+      const len = (a.pct / total) * circ;
+      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      c.setAttribute('cx', cx);
+      c.setAttribute('cy', cy);
+      c.setAttribute('r', r);
+      c.setAttribute('fill', 'none');
+      c.setAttribute('stroke', a.color);
+      c.setAttribute('stroke-width', stroke);
+      c.setAttribute('stroke-dasharray', `${len} ${circ - len}`);
+      c.setAttribute('stroke-dashoffset', -offset);
+      segs.appendChild(c);
+      offset += len;
+    });
+  }
+
+  function refresh() {
+    const allocs = getAllocations();
+    const total = allocs.reduce((s, a) => s + a.pct, 0);
+    document.getElementById('totalPct').textContent = Math.round(total * 10) / 10;
+    const barEl = document.getElementById('totalBar');
+    barEl.classList.remove('ok', 'warn');
+    if (Math.abs(total - 100) < 0.05) barEl.classList.add('ok');
+    else barEl.classList.add('warn');
+
+    let weightedReturn = 0;
+    if (total > 0) {
+      allocs.forEach(a => { weightedReturn += (a.pct / total) * a.ret; });
+    }
+    document.getElementById('expReturn').textContent = weightedReturn.toFixed(1) + '%';
+    drawDonut(allocs);
+    compute(weightedReturn);
+  }
+
+  holdings.forEach(h => {
+    document.getElementById('slider-' + h.id).addEventListener('input', e => {
+      document.getElementById('pct-' + h.id).textContent = e.target.value + '%';
+      refresh();
+    });
+  });
+
+  document.querySelectorAll('.preset-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      const p = b.dataset.preset;
+      if (p === 'normalize') { normalize(); return; }
+      setAllocations(presets[p]);
+    });
+  });
+
+  const $ = id => document.getElementById(id);
+  const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
+  let acct = 'roth';
+
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      acct = t.dataset.acct;
+      refresh();
+    });
+  });
+
+  ['start','contrib','years','taxRate'].forEach(id => {
+    $(id).addEventListener('input', refresh);
+  });
+
+  function compute(weightedReturn) {
+    const start = +$('start').value;
+    const contrib = +$('contrib').value;
+    const years = +$('years').value;
+    const ret = weightedReturn / 100;
+    const tax = +$('taxRate').value / 100;
+
+    $('vStart').textContent = fmt(start);
+    $('vContrib').textContent = fmt(contrib);
+    $('vYears').textContent = years + ' years';
+    $('vTax').textContent = (tax * 100).toFixed(0) + '%';
+
+    const path = [];
+    let bal = start;
+    path.push(bal);
+    for (let y = 1; y <= years; y++) {
+      bal = bal * (1 + ret) + contrib;
+      path.push(bal);
+    }
+
+    const gross = bal;
+    const contributed = start + contrib * years;
+    const growth = gross - contributed;
+
+    let taxOwed = 0, note = '';
+    if (acct === 'roth') {
+      taxOwed = 0;
+      note = `<strong>Roth IRA:</strong> Contributions after-tax. Growth and qualified withdrawals (after age 59½, account held 5+ years) are <em>100% tax-free</em>. 2026 limit: $7,500. Best when your bracket today is lower than your future bracket — almost certainly you.`;
+    } else if (acct === 'trad') {
+      taxOwed = gross * tax;
+      note = `<strong>Traditional IRA:</strong> Contributions pre-tax (deductible). Every dollar withdrawn in retirement taxed at ordinary-income rates. The slider applies that rate to the full withdrawal — adjust to model your expected retirement bracket. 2026 limit: $7,500 (shared with Roth).`;
+    } else if (acct === '529') {
+      taxOwed = 0;
+      note = `<strong>529 Plan:</strong> After-tax contributions, tax-free growth and withdrawals for qualified education. Non-qualified use: 10% penalty + tax on earnings. SECURE 2.0 allows up to $35K lifetime rollover to a Roth IRA after 15 years.`;
+    } else if (acct === 'taxable') {
+      const ltcg = tax <= 0.12 ? 0 : (tax >= 0.35 ? 0.20 : 0.15);
+      taxOwed = growth * ltcg;
+      note = `<strong>Taxable Brokerage:</strong> No limits, no rules. Dividends taxed yearly; gains taxed at LTCG rates when sold: <em>${(ltcg*100).toFixed(0)}%</em> for your bracket. Tax applies only to growth, not principal.`;
+    }
+
+    const net = gross - taxOwed;
+
+    $('rGross').textContent = fmt(gross);
+    $('rTax').textContent = fmt(taxOwed);
+    $('rNet').textContent = fmt(net);
+    $('rContrib').textContent = fmt(contributed);
+    $('rGrowth').textContent = fmt(growth);
+    $('taxNote').innerHTML = note;
+
+    drawChart(path);
+  }
+
+  function drawChart(data) {
+    const svg = $('growthChart');
+    svg.innerHTML = '';
+    const W = 600, H = 240, pad = { l: 50, r: 16, t: 16, b: 28 };
+    const innerW = W - pad.l - pad.r;
+    const innerH = H - pad.t - pad.b;
+    const max = Math.max(...data, 1);
+    const n = data.length;
+
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.t + (innerH * i / 4);
+      const val = max - max * (i / 4);
+      svg.innerHTML += `<line x1="${pad.l}" y1="${y}" x2="${W - pad.r}" y2="${y}" stroke="rgba(212,175,55,0.25)" stroke-width="1" stroke-dasharray="2 4"/>`;
+      const lbl = val >= 1000 ? '$' + Math.round(val/1000) + 'k' : '$' + Math.round(val);
+      svg.innerHTML += `<text x="${pad.l - 6}" y="${y + 4}" text-anchor="end" font-family="Cormorant Garamond, serif" font-size="11" fill="#6B1839" opacity="0.7">${lbl}</text>`;
+    }
+
+    const xTicks = Math.min(5, n - 1);
+    for (let i = 0; i <= xTicks; i++) {
+      const yr = Math.round((n - 1) * i / xTicks);
+      const x = pad.l + (innerW * yr / (n - 1));
+      svg.innerHTML += `<text x="${x}" y="${H - 10}" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="11" fill="#6B1839" opacity="0.7">Yr ${yr}</text>`;
+    }
+
+    let area = `M ${pad.l} ${pad.t + innerH}`;
+    let line = '';
+    data.forEach((v, i) => {
+      const x = pad.l + (innerW * i / (n - 1 || 1));
+      const y = pad.t + innerH - (innerH * v / (max || 1));
+      area += ` L ${x} ${y}`;
+      line += (i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`);
+    });
+    area += ` L ${pad.l + innerW} ${pad.t + innerH} Z`;
+
+    svg.innerHTML += `
+      <defs>
+        <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FF6B9D" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#FF6B9D" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+      <path d="${area}" fill="url(#areaGrad)"/>
+      <path d="${line}" fill="none" stroke="#C9184A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    `;
+
+    const lastX = pad.l + innerW;
+    const lastY = pad.t + innerH - (innerH * data[data.length-1] / (max || 1));
+    svg.innerHTML += `
+      <circle cx="${lastX}" cy="${lastY}" r="6" fill="#D4AF37" stroke="#fff" stroke-width="2"/>
+      <circle cx="${lastX}" cy="${lastY}" r="11" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.4"/>
+    `;
+  }
+
+  refresh();
+</script>
+</body>
+</html>
